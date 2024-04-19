@@ -1,6 +1,6 @@
 import uuid
 from datetime import datetime
-from typing import Any, ClassVar, Literal, TypeVar
+from typing import Any, ClassVar, Literal, TypeVar, override
 
 from sqlalchemy import JSON, DateTime, ForeignKey, MetaData, func
 from sqlalchemy.dialects.postgresql import UUID
@@ -13,7 +13,6 @@ from sqlalchemy.orm import (
     relationship,
 )
 from sqlalchemy.types import TypeEngine
-from typing_extensions import override
 
 
 class Base(AsyncAttrs, DeclarativeBase):
@@ -38,7 +37,7 @@ class Base(AsyncAttrs, DeclarativeBase):
 
     @declared_attr.directive
     @override
-    def __tablename__(cls) -> str:
+    def __tablename__(cls) -> str:  # noqa: N805
         return f"{cls.__name__.lower()}s"
 
 

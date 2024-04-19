@@ -2,7 +2,7 @@
 
 format:
 	ruff check --fix --exit-non-zero-on-fix --show-fixes --preview
-	black app $(ARGS)
+	black src $(ARGS)
 
 lint:
 	ruff check
