@@ -1,12 +1,13 @@
 FROM python:3.12-slim-bookworm as python-base
 
 ENV \
+    ALEMBIC_CONFIG=/app/src/migrations/alembic.ini \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=off \
     PIP_DISABLE_PIP_VERSION_CHECK=on
 
-WORKDIR /src
+WORKDIR /app
 
 
 FROM python-base as dependencies-base
@@ -40,7 +41,7 @@ FROM python-base as dev
 CMD ["uvicorn", "src.core.fastapi:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 EXPOSE 8000
 
-COPY --from=dependencies-dev /src/dependencies /usr/local
+COPY --from=dependencies-dev /app/dependencies /usr/local
 COPY . .
 
 
@@ -52,6 +53,6 @@ EXPOSE 8000
 ARG VERSION
 ENV VERSION=$VERSION
 
-COPY --from=dependencies-prod /src/dependencies /usr/local
+COPY --from=dependencies-prod /app/dependencies /usr/local
 COPY gunicorn.conf.py .
 COPY src src
