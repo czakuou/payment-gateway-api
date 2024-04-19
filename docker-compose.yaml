@@ -35,47 +35,47 @@ services:
     environment:
       <<: *app-envs
       DEBUG: 1
-    #   POSTGRES_HOST: db
-    # depends_on:
-    #   alembic:
-    #     condition: service_started
+      POSTGRES_HOST: db
+    depends_on:
+      alembic:
+        condition: service_started
     ports:
       - "8000:8000"
 
-  # alembic:
-  #   <<: *app-base
-  #   entrypoint: alembic
-  #   command: upgrade head
-  #   restart: "no"
-  #   environment:
-  #     <<: *app-envs
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
+  alembic:
+    <<: *app-base
+    entrypoint: alembic
+    command: upgrade head
+    restart: "no"
+    environment:
+      <<: *app-envs
+    depends_on:
+      db:
+        condition: service_healthy
 
-  # db:
-  #   <<: *db-base
-  #   volumes:
-  #     - db-data:/var/lib/postgresql/data
-  #   ports:
-  #     - "5433:5432"
+  db:
+    <<: *db-base
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
 
   tests:
     <<: *app-base
     command: pytest
     environment:
       <<: *app-envs
-    #   POSTGRES_HOST: tests-db
-    # depends_on:
-    #   tests-db:
-    #     condition: service_healthy
+      POSTGRES_HOST: tests-db
+    depends_on:
+      tests-db:
+        condition: service_healthy
 
-#   tests-db:
-#     <<: *db-base
-#     tmpfs:
-#       - /var/lib/postgresql/data
-#     ports:
-#       - "5432:5432"
+  tests-db:
+    <<: *db-base
+    tmpfs:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
-# volumes:
-#   db-data:
+volumes:
+  db-data:
