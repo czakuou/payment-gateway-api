@@ -14,13 +14,119 @@ gunicorn = "^22.0.0"
 pydantic = "^2.7.0"
 pydantic-settings = "^2.2.1"
 structlog = "^24.1.0"
-schedule = "^1.2.1"
 alembic = "^1.13.1"
+pre-commit = "^3.7.0"
 
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
+ruff = "^0.4.1"
+black = "^24.4.0"
+mypy = "^1.9.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = [
+    "F",     # Pyflakes
+    "E",     # pycodestyle
+    "W",     # pycodestyle
+    "C90",   # mccabe
+    "I",     # isort
+    "N",     # pep8-naming
+    "UP",    # pyupgrade
+    "ASYNC", # flake8-async
+    "S",     # flake8-bandit
+    "BLE",   # flake8-blind-except
+    "FBT",   # flake8-boolean-trap
+    "B",     # flake8-bugbear
+    "A",     # flake8-builtins
+    "C4",    # flake8-comprehensions
+    "DTZ",   # flake8-datetimez
+    "T10",   # flake8-debugger
+    "EM",    # flake8-errmsg
+    "EXE",   # flake8-executable
+    "FA",    # flake8-future-annotations
+    "ISC",   # flake8-implicit-str-concat
+    "ICN",   # flake8-import-conventions
+    "INP",   # flake8-no-pep420
+    "PIE",   # flake8-pie
+    "T20",   # flake8-print
+    "PT",    # flake8-pytest-style
+    "Q",     # flake8-quotes
+    "RSE",   # flake8-raise
+    "RET",   # flake8-return
+    "SLF",   # flake8-self
+    "SLOT",  # flake8-slots
+    "SIM",   # flake8-simplify
+    "TID",   # flake8-tidy-imports
+    "TCH",   # flake8-type-checking
+    "INT",   # flake8-gettext
+    "ARG",   # flake8-unused-arguments
+    "PTH",   # flake8-use-pathlib
+    "TD",    # flake8-todos
+    "ERA",   # eradicate
+    "PGH",   # pygrep-hooks
+    "PL",    # pylint
+    "TRY",   # tryceratops
+    "FLY",   # flynt
+    "PERF",  # Perflint
+    "FURB",  # refurb
+    "LOG",   # flake8-logging
+    "RUF",   # ruff-specific rules
+]
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/*" = [
+    "S101", # Use of assert detected
+]
+"**/**/*" = [
+    "UP040", # `TypeAlias` annotation instead of the `type` keyword
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.black]
+line-length = 120
+target-version = ['py312']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | .venv
+    | venv
+    | _build
+    | buck-out
+    | build
+    | dependencies
+    | dist
+  )/
+)
+'''
+
+
+[tool.ruff.lint.flake8-builtins]
+builtins-ignorelist = ["id", "type", "bin"]
+
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+enable_error_code = ["explicit-override"]
+plugins = ["pydantic.mypy"]
+
+[tool.pytest]
+addopts = "--cov=app --cov-report=term-missing"

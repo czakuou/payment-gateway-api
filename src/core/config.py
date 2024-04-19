@@ -1,4 +1,5 @@
 from urllib.parse import urlencode
+
 from pydantic import PostgresDsn, SecretStr, computed_field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -17,7 +18,6 @@ class AppConfig(BaseSettings):
 
     log_level: str = "INFO"
     log_json: bool = True
-
 
 
 class PostgresConfig(BaseSettings):

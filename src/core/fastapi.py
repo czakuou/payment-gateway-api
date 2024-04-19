@@ -1,21 +1,20 @@
-
 from fastapi import APIRouter, FastAPI
 
 from src.core.config import AppConfig
 from src.core.dependencies import get_app_config
-from starlette.types import Lifespan
+from src.core.logging import configure as configure_logging
 from src.health.endpoints import router as health_router
 
-from src.core.logging import configure as configure_logging
 
 def get_router() -> APIRouter:
     router = APIRouter()
-    
+
     router.include_router(health_router, tags=["Health"])
-    
+
     return router
 
-def get_application(config: AppConfig, router: APIRouter, lifespan: Lifespan[FastAPI] | None = None) -> FastAPI:
+
+def get_application(config: AppConfig, router: APIRouter) -> FastAPI:
     configure_logging(app_config=config)
 
     application = FastAPI(
@@ -30,5 +29,6 @@ def get_application(config: AppConfig, router: APIRouter, lifespan: Lifespan[Fas
     application.include_router(router)
 
     return application
+
 
 app = get_application(config=get_app_config(), router=get_router())
