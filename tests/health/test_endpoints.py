@@ -8,9 +8,9 @@ if TYPE_CHECKING:
     from src.core.config import AppConfig
 
 
-def test_health(unauthenticated_client: TestClient, app_config: AppConfig) -> None:
+def test_health(client: TestClient, app_config: AppConfig) -> None:
     # when
-    response = unauthenticated_client.get("health")
+    response = client.get("health")
 
     # then
     assert response.status_code == 200

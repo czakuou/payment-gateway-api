@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 import pytest
+from starlette.testclient import TestClient
 
 from src.core.config import AppConfig
 from src.core.dependencies import get_app_config
@@ -14,9 +15,11 @@ if TYPE_CHECKING:
     from fastapi import FastAPI
 
 
-pytest_plugins = [
-    "tests.fixtures.clients",
-]
+@pytest.fixture
+def client(
+    fastapi_app: FastAPI,
+) -> TestClient:
+    return TestClient(app=fastapi_app)
 
 
 @pytest.fixture(scope="session")
