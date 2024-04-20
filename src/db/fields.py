@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING, Literal, TypeVar
 
 from sqlalchemy import UUID, ForeignKey
@@ -11,7 +13,7 @@ if TYPE_CHECKING:
     Model = TypeVar("Model", bound=Base)
 
 
-def foreign_key(target: type["Base"], ondelete: Literal["CASCADE", "SET NULL"] = "CASCADE") -> Mapped["uuid.UUID"]:
+def foreign_key(target: type[Base], ondelete: Literal["CASCADE", "SET NULL"] = "CASCADE") -> Mapped[uuid.UUID]:
     return mapped_column(UUID(as_uuid=True), ForeignKey(target.id, ondelete=ondelete))
 
 
