@@ -8,9 +8,10 @@ from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
 from structlog.typing import FilteringBoundLogger
 
-from src.core.config import AppConfig, PostgresConfig
+from src.core.config import AppConfig
 from src.core.db import get_db_engine, get_db_session
 from src.core.logging import get_structlog_processors
+from src.db.config import PostgresConfig
 
 
 @cache

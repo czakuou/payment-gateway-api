@@ -1,7 +1,7 @@
 from unittest.mock import ANY
 
-from src.core.config import PostgresConfig
 from src.core.db import get_db_engine
+from src.db.config import PostgresConfig
 
 
 async def test_engine_connect_args() -> None:

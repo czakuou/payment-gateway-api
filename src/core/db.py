@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncConnection, AsyncEngine, AsyncSession, c
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator
 
-    from src.core.config import PostgresConfig
+    from src.db.config import PostgresConfig
 
 
 @cache
