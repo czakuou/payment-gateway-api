@@ -15,7 +15,7 @@ x-app-base: &app-base
     context: .
     target: dev
   volumes:
-    - .:/src/
+    - .:/app/
 
 x-db-base: &db-base
   image: postgres:14
@@ -62,7 +62,7 @@ services:
 
   tests:
     <<: *app-base
-    command: pytest
+    entrypoint: pytest
     environment:
       <<: *app-envs
       POSTGRES_HOST: tests-db

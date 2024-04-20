@@ -1,0 +1,59 @@
+{
+  "target": {
+    "app": {
+      "cache-from": [
+        "type=gha,scope=payment-gateway-api/app:cache"
+      ],
+      "cache-to": [
+        "type=gha,mode=max,scope=payment-gateway-api/app:cache"
+      ],
+      "output": [
+        "type=docker"
+      ]
+    },
+    "db": {
+      "cache-from": [
+        "type=gha,scope=payment-gateway-api/db:cache"
+      ],
+      "cache-to": [
+        "type=gha,mode=max,scope=payment-gateway-api/db:cache"
+      ],
+      "output": [
+        "type=docker"
+      ]
+    },
+    "alembic": {
+      "cache-from": [
+        "type=gha,scope=payment-gateway-api/alembic:cache"
+      ],
+      "cache-to": [
+        "type=gha,mode=max,scope=payment-gateway-api/alembic:cache"
+      ],
+      "output": [
+        "type=docker"
+      ]
+    },
+    "tests": {
+      "cache-from": [
+        "type=gha,scope=payment-gateway-api/tests:cache"
+      ],
+      "cache-to": [
+        "type=gha,mode=max,scope=payment-gateway-api/tests:cache"
+      ],
+      "output": [
+        "type=docker"
+      ]
+    },
+    "tests-db": {
+      "cache-from": [
+        "type=gha,scope=payment-gateway-api/tests-db:cache"
+      ],
+      "cache-to": [
+        "type=gha,mode=max,scope=payment-gateway-api/tests-db:cache"
+      ],
+      "output": [
+        "type=docker"
+      ]
+    }
+  }
+}

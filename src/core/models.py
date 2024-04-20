@@ -37,7 +37,7 @@ class Base(AsyncAttrs, DeclarativeBase):
 
     @declared_attr.directive
     @override
-    def __tablename__(cls) -> str:  # noqa: N805
+    def __tablename__(cls) -> str:
         return f"{cls.__name__.lower()}s"
 
 
