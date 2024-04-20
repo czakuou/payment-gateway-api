@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, FastAPI
@@ -18,7 +20,7 @@ def get_router() -> APIRouter:
     return router
 
 
-def get_application(config: "AppConfig") -> FastAPI:
+def get_application(config: AppConfig) -> FastAPI:
     configure_logging(app_config=config)
 
     application = FastAPI(
