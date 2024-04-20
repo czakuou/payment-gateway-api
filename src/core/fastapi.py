@@ -1,9 +1,15 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 from fastapi import APIRouter, FastAPI
 
-from src.core.config import AppConfig
 from src.core.dependencies import get_app_config
 from src.core.logging import configure as configure_logging
 from src.health.endpoints import router as health_router
+
+if TYPE_CHECKING:
+    from src.core.config import AppConfig
 
 
 def get_router() -> APIRouter:
@@ -14,7 +20,7 @@ def get_router() -> APIRouter:
     return router
 
 
-def get_application(config: AppConfig, router: APIRouter) -> FastAPI:
+def get_application(config: AppConfig) -> FastAPI:
     configure_logging(app_config=config)
 
     application = FastAPI(
@@ -26,9 +32,9 @@ def get_application(config: AppConfig, router: APIRouter) -> FastAPI:
         redoc_url="/contract/redoc",
     )
 
-    application.include_router(router)
+    application.include_router(get_router())
 
     return application
 
 
-app = get_application(config=get_app_config(), router=get_router())
+app = get_application(config=get_app_config())

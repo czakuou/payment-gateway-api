@@ -64,12 +64,10 @@ def get_structlog_processors(app_config: AppConfig) -> list[structlog.typing.Pro
     ]
 
     if app_config.log_json:
-        processors.extend(
-            (
-                structlog.processors.dict_tracebacks,
-                structlog.processors.JSONRenderer(ensure_ascii=False),
-            )
-        )
+        processors.extend((
+            structlog.processors.dict_tracebacks,
+            structlog.processors.JSONRenderer(ensure_ascii=False),
+        ))
     else:
         processors.append(structlog.dev.ConsoleRenderer(pad_event=50, colors=True))
 
@@ -77,7 +75,7 @@ def get_structlog_processors(app_config: AppConfig) -> list[structlog.typing.Pro
 
 
 class StructlogMiddleware:
-    def __init__(self, app: ASGIApp):
+    def __init__(self, app: ASGIApp) -> None:
         self.app = app
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:

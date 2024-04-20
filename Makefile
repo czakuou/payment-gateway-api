@@ -41,3 +41,6 @@ start:
 	@docker system prune -a
 	@docker compose build
 	@docker compose up app -d
+
+build:
+	@docker compose build
