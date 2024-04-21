@@ -5,8 +5,8 @@ from typing import Annotated
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
 
-from src.core.db import get_db_engine, get_db_session
-from src.db.config import PostgresConfig
+from src.core.db.config import PostgresConfig
+from src.core.sql_db import get_db_engine, get_db_session
 
 
 @cache

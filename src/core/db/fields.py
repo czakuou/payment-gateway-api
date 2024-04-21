@@ -8,7 +8,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 if TYPE_CHECKING:
     import uuid
 
-    from src.db.models import Base
+    from src.core.db.models import Base
 
     Model = TypeVar("Model", bound=Base)
 

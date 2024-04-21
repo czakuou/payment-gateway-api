@@ -6,7 +6,7 @@ from fastapi import APIRouter, FastAPI
 
 from src.core.dependencies import get_app_config
 from src.core.logging import configure as configure_logging
-from src.health.endpoints import router as health_router
+from src.features.health.routes import router as health_router
 
 if TYPE_CHECKING:
     from src.core.config import AppConfig
