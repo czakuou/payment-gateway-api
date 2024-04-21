@@ -1,12 +1,11 @@
-from typing import TYPE_CHECKING
+from __future__ import annotations
 
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 from sqlalchemy import select, text
 
-if TYPE_CHECKING:
-    from src.core.db.dependencies import DBSessionDependency
-    from src.core.dependencies import AppConfigDependency
+from src.core.db.dependencies import DBSessionDependency
+from src.core.dependencies import AppConfigDependency
 
 router = APIRouter()
 
@@ -16,7 +15,7 @@ class HealthResponse(BaseModel):
 
 
 @router.get("/health", response_model=HealthResponse)
-async def health(config: "AppConfigDependency", db: "DBSessionDependency") -> dict[str, str]:
+async def health(config: AppConfigDependency, db: DBSessionDependency) -> dict[str, str]:
     query = select(text("1"))
     await db.execute(query)
 

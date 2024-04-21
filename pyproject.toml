@@ -46,6 +46,7 @@ ignore = [
     "COM812",  # Checks for the absence of trailing commas
     "ISC001",  # Checks for implicitly concatenated strings on a single line
     "FIX002",  # Line contains TODO, consider resolving the issue
+    "TCH001",  # first-party imports used only for type annotations not defined in a type-checking block
 ]
 
 [tool.ruff.lint.per-file-ignores]
