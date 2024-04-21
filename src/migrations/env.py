@@ -10,7 +10,7 @@ from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from src.core.config import PostgresConfig
-from src.db.models import Base
+from src.core.db.models import Base
 
 logging.basicConfig(level=logging.INFO)
 

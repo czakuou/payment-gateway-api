@@ -25,7 +25,7 @@ repos:
       - id: ruff-format
         args: [ --preview ]
       - id: ruff
-        args: [ --fix, --unsafe-fixes, --preview, --show-fixes, --exit-non-zero-on-fix ]
+        args: [ --fix, --preview, --show-fixes, --exit-non-zero-on-fix ]
   - repo: local
     hooks:
       - id: mypy

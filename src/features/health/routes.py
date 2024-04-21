@@ -1,11 +1,17 @@
+from __future__ import annotations
+
 from fastapi import APIRouter
+from pydantic import BaseModel, Field
 from sqlalchemy import select, text
 
+from src.core.db.dependencies import DBSessionDependency
 from src.core.dependencies import AppConfigDependency
-from src.db.dependencies import DBSessionDependency
-from src.health.schemas import HealthResponse
 
 router = APIRouter()
+
+
+class HealthResponse(BaseModel):
+    version: str = Field(description="version (commit short SHA)")
 
 
 @router.get("/health", response_model=HealthResponse)
