@@ -101,8 +101,8 @@ asyncio_mode = "auto"
 omit = [
     "**/tests/*",
     "src/migrations/*",
-    "src/db/fields.py",
-    "src/db/models.py",
+    "src/core/db/fields.py",
+    "src/core/db/models.py",
 ]
 concurrency = ["thread", "greenlet"]
 
