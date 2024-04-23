@@ -27,9 +27,9 @@ def get_application(config: AppConfig) -> FastAPI:
         title=config.project_name,
         version=config.version,
         debug=config.debug,
-        openapi_url="/contract/openapi.json" if config.docs else None,
-        docs_url="/contract/swagger",
-        redoc_url="/contract/redoc",
+        openapi_url="/docs/openapi.json" if config.docs else None,
+        docs_url="/docs/swagger",
+        redoc_url="/docs/redoc",
     )
 
     application.include_router(get_router())
