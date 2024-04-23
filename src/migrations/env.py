@@ -1,16 +1,19 @@
 import asyncio
 import logging
 from importlib import import_module
+from typing import TYPE_CHECKING
 
 from alembic import context, util
-from alembic.operations.ops import MigrationScript
-from alembic.runtime.migration import MigrationContext
 from sqlalchemy import pool
-from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from src.core.config import PostgresConfig
 from src.core.db.models import Base
+
+if TYPE_CHECKING:
+    from alembic.operations.ops import MigrationScript
+    from alembic.runtime.migration import MigrationContext
+    from sqlalchemy.engine import Connection
 
 logging.basicConfig(level=logging.INFO)
 
@@ -40,9 +43,9 @@ def run_migrations_offline() -> None:
         context.run_migrations()
 
 
-def do_run_migrations(connection: Connection) -> None:
+def do_run_migrations(connection: "Connection") -> None:
     def process_revision_directives(
-        context: MigrationContext, _revision: tuple[str], directives: list[MigrationScript]
+        context: "MigrationContext", _revision: tuple[str], directives: list["MigrationScript"]
     ) -> None:
         if not context.config:
             return

@@ -6,7 +6,7 @@ import structlog
 from fastapi import Depends
 from structlog.typing import FilteringBoundLogger
 
-from src.core.config import AppConfig
+from src.core.config import AppConfig, StripeConfig
 from src.core.logging import get_structlog_processors
 
 
@@ -16,6 +16,14 @@ def get_app_config() -> AppConfig:
 
 
 AppConfigDependency = Annotated[AppConfig, Depends(get_app_config)]
+
+
+@cache
+def get_stripe_config() -> StripeConfig:
+    return StripeConfig()
+
+
+StripeConfigDependency = Annotated[StripeConfig, Depends(get_stripe_config)]
 
 
 @cache

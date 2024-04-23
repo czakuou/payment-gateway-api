@@ -7,6 +7,7 @@ from fastapi import APIRouter, FastAPI
 from src.core.dependencies import get_app_config
 from src.core.logging import configure as configure_logging
 from src.features.health.routes import router as health_router
+from src.features.payments_router import router as payments_router
 
 if TYPE_CHECKING:
     from src.core.config import AppConfig
@@ -16,6 +17,7 @@ def get_router() -> APIRouter:
     router = APIRouter()
 
     router.include_router(health_router, tags=["Health"])
+    router.include_router(payments_router, tags=["Payments"])
 
     return router
 
