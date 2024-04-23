@@ -18,13 +18,13 @@ down:
 bash:
 	@docker compose -f docker-compose.yml run --rm app bash
 
-migrate:
+migration up:
 	@docker compose run --rm alembic revision --autogenerate -m "$(message)"
 
-upgrade:
+migration upgrade:
 	@docker compose run --rm alembic upgrade head
 
-downgrade:
+migration downgrade:
 	@docker compose run --rm alembic downgrade -1
 
 tests:

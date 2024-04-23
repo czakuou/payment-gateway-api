@@ -60,7 +60,7 @@ ignore = [
     "PLR6301",  # Method could be a function or static method
     "FBT001",   # Boolean-typed positional argument in function definition
 ]
-"**/{dependencies,endpoints,schemas}*" = [
+"**/{dependencies,endpoints,schemas,routes}*" = [
     "TCH001",  # first-party imports used only for type annotations not defined in a type-checking block
     "TCH002",  # third-party imports used only for type annotations not defined in a type-checking block
     "TCH003",  # standard library imports used only for type annotations not defined in a type-checking block
@@ -103,6 +103,8 @@ omit = [
     "src/migrations/*",
     "src/core/db/fields.py",
     "src/core/db/models.py",
+    "src/core/db/config.py",
+    "src/core/config.py",
 ]
 concurrency = ["thread", "greenlet"]
 
