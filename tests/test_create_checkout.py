@@ -14,7 +14,7 @@ def test_create_checkout_should_return_url(mock_stripe: Mock, client: "TestClien
         "/payments",
         json={
             "amount": 1000,
-            "currency": "usd",
+            "currency": "USD",
             "payment_method_types": ["card"],
         },
     )
@@ -30,7 +30,7 @@ def test_test_checkout_stripe_error_should_rise_checkout_error(mock_stripe: Mock
         "/payments",
         json={
             "amount": 1000,
-            "currency": "usd",
+            "currency": "USD",
             "payment_method_types": ["card"],
         },
     )

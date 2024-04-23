@@ -18,6 +18,8 @@ alembic = "^1.13.1"
 pre-commit = "^3.7.0"
 sqlalchemy = {version = "^2.0.29", extras = ["asyncio", "postgresql-psycopgbinary"]}
 stripe = "^9.3.0"
+pydantic-extra-types = "^2.7.0"
+pycountry = "^23.12.11"
 
 
 [tool.poetry.group.dev.dependencies]

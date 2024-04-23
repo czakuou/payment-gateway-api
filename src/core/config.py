@@ -23,3 +23,4 @@ class StripeConfig(BaseSettings):
     )
 
     api_key: str = "sk_test_"
+    success_url: str = "http://example.com/success"
