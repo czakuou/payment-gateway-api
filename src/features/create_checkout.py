@@ -26,7 +26,7 @@ class CreateCheckoutResponse(BaseModel):
     url: AnyUrl
 
 
-class StripeConnector:
+class CheckoutService:
     class BaseError(Exception):
         pass
 
@@ -66,11 +66,11 @@ class StripeConnector:
 
 
 @cache
-def get_stripe_connector(config: StripeConfigDependency, logger: LoggerDependency) -> StripeConnector:
-    return StripeConnector(stripe_api_key=config.api_key, logger=logger)
+def get_stripe_connector(config: StripeConfigDependency, logger: LoggerDependency) -> CheckoutService:
+    return CheckoutService(stripe_api_key=config.api_key, logger=logger)
 
 
-StripeConnectorDependency = Annotated[StripeConnector, Depends(get_stripe_connector)]
+CheckoutServiceDependency = Annotated[CheckoutService, Depends(get_stripe_connector)]
 
 
 @router.post(
@@ -79,7 +79,7 @@ StripeConnectorDependency = Annotated[StripeConnector, Depends(get_stripe_connec
     summary="Create a new checkout session.",
     status_code=status.HTTP_201_CREATED,
 )
-def checkout(request: CreateCheckoutRequest, service: StripeConnectorDependency) -> dict[Any, Any]:
+def checkout(request: CreateCheckoutRequest, service: CheckoutServiceDependency) -> dict[Any, Any]:
     try:
         return service.create_checkout(request)
     except service.CheckoutError as e:
