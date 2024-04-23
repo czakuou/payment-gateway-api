@@ -14,7 +14,7 @@ if TYPE_CHECKING:
 
 
 def get_router() -> APIRouter:
-    router = APIRouter()
+    router = APIRouter(prefix="/api")
 
     router.include_router(health_router, tags=["Health"])
     router.include_router(payments_router, tags=["Payments"])

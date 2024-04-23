@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import asyncio
 import logging
 from importlib import import_module
@@ -43,9 +45,11 @@ def run_migrations_offline() -> None:
         context.run_migrations()
 
 
-def do_run_migrations(connection: "Connection") -> None:
+def do_run_migrations(connection: Connection) -> None:
     def process_revision_directives(
-        context: "MigrationContext", _revision: tuple[str], directives: list["MigrationScript"]
+        context: MigrationContext,
+        _revision: tuple[str],
+        directives: list[MigrationScript],
     ) -> None:
         if not context.config:
             return

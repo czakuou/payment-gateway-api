@@ -25,7 +25,9 @@ def _get_db_engine(config: DBConfigDependency) -> AsyncEngine:
 DBEngineDependency = Annotated[AsyncEngine, Depends(_get_db_engine)]
 
 
-async def _get_db_session(engine: DBEngineDependency) -> AsyncGenerator[AsyncSession, None]:
+async def _get_db_session(
+    engine: DBEngineDependency,
+) -> AsyncGenerator[AsyncSession, None]:
     async for session in get_db_session(engine=engine):
         yield session
 

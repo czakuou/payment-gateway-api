@@ -33,7 +33,10 @@ def get_logger(config: AppConfigDependency) -> FilteringBoundLogger:
     processors = get_structlog_processors(config)
 
     bound_logger: FilteringBoundLogger = structlog.wrap_logger(
-        logger=logger, processors=processors, wrapper_class=bound_logger_class, context={}
+        logger=logger,
+        processors=processors,
+        wrapper_class=bound_logger_class,
+        context={},
     )
     return bound_logger
 

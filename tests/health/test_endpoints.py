@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 
 def test_health(client: TestClient, app_config: AppConfig) -> None:
     # when
-    response = client.get("health")
+    response = client.get("/api/health")
 
     # then
     assert response.status_code == 200

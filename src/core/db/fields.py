@@ -22,7 +22,11 @@ def parent_relationship(target: type[Model], *, back_populates: str) -> Mapped[M
 
 
 def child_relationship(
-    target: str, *, back_populates: str, uselist: bool | None = None, order_by: str | None = None
+    target: str,
+    *,
+    back_populates: str,
+    uselist: bool | None = None,
+    order_by: str | None = None,
 ) -> Mapped[list[Model]]:
     return relationship(
         target,

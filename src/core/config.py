@@ -19,7 +19,11 @@ class AppConfig(BaseSettings):
 
 class StripeConfig(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env", env_prefix="stripe_", env_file_encoding="utf-8", extra="ignore", frozen=True
+        env_file=".env",
+        env_prefix="stripe_",
+        env_file_encoding="utf-8",
+        extra="ignore",
+        frozen=True,
     )
 
     api_key: str = "sk_test_"
