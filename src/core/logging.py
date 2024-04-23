@@ -1,14 +1,17 @@
 from __future__ import annotations
 
 from logging.config import dictConfig
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, TypeAlias
 
 import structlog
+from structlog.typing import FilteringBoundLogger
 
 if TYPE_CHECKING:
     from starlette.types import ASGIApp, Receive, Scope, Send
 
     from src.core.config import AppConfig
+
+Logger: TypeAlias = FilteringBoundLogger
 
 
 def configure(app_config: AppConfig) -> None:

@@ -1,7 +1,7 @@
 .PHONY: tests
 
 format:
-	ruff check --fix --exit-non-zero-on-fix --show-fixes --preview
+	ruff check --fix --exit-non-zero-on-fix --show-fixes --preview --unsafe-fixes
 	black src $(ARGS)
 
 lint:
@@ -18,13 +18,13 @@ down:
 bash:
 	@docker compose -f docker-compose.yml run --rm app bash
 
-migration up:
+migration-up:
 	@docker compose run --rm alembic revision --autogenerate -m "$(message)"
 
-migration upgrade:
+migration-upgrade:
 	@docker compose run --rm alembic upgrade head
 
-migration downgrade:
+migration-downgrade:
 	@docker compose run --rm alembic downgrade -1
 
 tests:

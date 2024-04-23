@@ -17,6 +17,9 @@ structlog = "^24.1.0"
 alembic = "^1.13.1"
 pre-commit = "^3.7.0"
 sqlalchemy = {version = "^2.0.29", extras = ["asyncio", "postgresql-psycopgbinary"]}
+stripe = "^9.3.0"
+pydantic-extra-types = "^2.7.0"
+pycountry = "^23.12.11"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -47,6 +50,7 @@ ignore = [
     "ISC001",  # Checks for implicitly concatenated strings on a single line
     "FIX002",  # Line contains TODO, consider resolving the issue
     "TCH001",  # first-party imports used only for type annotations not defined in a type-checking block
+    "ANN101", # Missing type annotation for self in method
 ]
 
 [tool.ruff.lint.per-file-ignores]

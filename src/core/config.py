@@ -15,3 +15,16 @@ class AppConfig(BaseSettings):
 
     log_level: str = "INFO"
     log_json: bool = True
+
+
+class StripeConfig(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_prefix="stripe_",
+        env_file_encoding="utf-8",
+        extra="ignore",
+        frozen=True,
+    )
+
+    api_key: str = "sk_test_"
+    success_url: str = "http://example.com/success"

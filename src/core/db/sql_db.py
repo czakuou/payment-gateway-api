@@ -3,7 +3,12 @@ from __future__ import annotations
 from functools import cache
 from typing import TYPE_CHECKING, Any
 
-from sqlalchemy.ext.asyncio import AsyncConnection, AsyncEngine, AsyncSession, create_async_engine
+from sqlalchemy.ext.asyncio import (
+    AsyncConnection,
+    AsyncEngine,
+    AsyncSession,
+    create_async_engine,
+)
 
 if TYPE_CHECKING:
     from collections.abc import AsyncGenerator

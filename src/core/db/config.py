@@ -6,7 +6,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class PostgresConfig(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env", env_file_encoding="utf-8", env_prefix="postgres_", extra="ignore", frozen=True
+        env_file=".env",
+        env_file_encoding="utf-8",
+        env_prefix="postgres_",
+        extra="ignore",
+        frozen=True,
     )
 
     scheme: str = "postgresql+psycopg"
