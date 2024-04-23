@@ -39,4 +39,4 @@ def test_create_checkout_raises_checkout_error(mock_stripe: Mock, client: TestCl
         },
     )
 
-    assert response.status_code == 503
+    assert response.status_code == status.HTTP_503_SERVICE_UNAVAILABLE
