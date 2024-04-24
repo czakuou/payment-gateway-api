@@ -51,7 +51,11 @@ class CheckoutService:
         try:
             session = stripe.checkout.Session.create(**request_data)
         except stripe.StripeError as e:
-            self._log.error("An error occurred while creating the checkout.", exc_info=e, session_id=session_id)
+            self._log.error(
+                "An error occurred while creating the checkout.",
+                exc_info=e,
+                session_id=session_id,
+            )
             raise self.CheckoutError from e
         self._log.info("Checkout session created successfully.", session_id=session_id)
         return session
