@@ -51,6 +51,17 @@ test = ["anyio[trio]", "coverage[toml] (>=7)", "exceptiongroup (>=1.2.0)", "hypo
 trio = ["trio (>=0.23)"]
 
 [[package]]
+name = "apos"
+version = "0.2.1.2"
+description = "The backbone for message-driven applications."
+optional = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "apos-0.2.1.2-py3-none-any.whl", hash = "sha256:5f56654ebc079758027386afb59171813acc53a1c77dba2570e9582aa7425932"},
+    {file = "apos-0.2.1.2.tar.gz", hash = "sha256:78f7af43b0404779bb477d243d2b58fc206dcb321b413d471325c56f9497382f"},
+]
+
+[[package]]
 name = "black"
 version = "24.4.0"
 description = "The uncompromising code formatter."
@@ -1439,4 +1450,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "10ca2e8b4dae3bf2f2e661bb0de82576cd63843c6bdd7c82cdfb857aacd5b0ab"
+content-hash = "90c67b57aa59b5068a6716b150f0cc9a3b5effea3e7bd1dbe7ab078824793f14"
