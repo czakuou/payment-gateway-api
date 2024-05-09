@@ -56,7 +56,7 @@ jobs:
         run: |
           docker compose run tests --junitxml=reports/junit.xml --cov=. --cov-branch --cov-report=term --cov-report=xml:reports/coverage.xml --cov-report=html:reports/coverage
       - name: Test Report
-        uses: dorny/test-reporter@c40d89d5e987cd80f3a32b3c233556e22bdca958  # v1.9.0
+        uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5  # v1.9.1
         if: success() || failure()
         with:
           name: pytest results
