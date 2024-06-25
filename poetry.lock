@@ -1329,13 +1329,13 @@ full = ["httpx (>=0.22.0)", "itsdangerous", "jinja2", "python-multipart (>=0.0.7
 
 [[package]]
 name = "stripe"
-version = "9.4.0"
+version = "10.0.0"
 description = "Python bindings for the Stripe API"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "stripe-9.4.0-py2.py3-none-any.whl", hash = "sha256:d4e8fbae89504b8e51a03619c1aaa2a77e2ee9b1db8d129e18dfe0e2537a0ddd"},
-    {file = "stripe-9.4.0.tar.gz", hash = "sha256:0fde1cbbf45ee0d77bd7fbd8561886dfb6dac0f36e5a9e53fdca4a7386e23ecc"},
+    {file = "stripe-10.0.0-py2.py3-none-any.whl", hash = "sha256:48a99472065143de9a304ea34976b163cb6bb1dc6e4cdc1615640aecf41220e3"},
+    {file = "stripe-10.0.0.tar.gz", hash = "sha256:19dbc7edb2521f61cd3afe142318925db945ed0a8ae590d8fd5aed22e1d21e89"},
 ]
 
 [package.dependencies]
@@ -1439,4 +1439,4 @@ test = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "coverage-enable-subprocess
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "cf1a95cc281f1694a4b1840b3f0394f1b1b2de5f84f0fde1a0ed928a82c604e8"
+content-hash = "3098aad9b90f556c68f88e5dda7b6e40ae1f7999a9c7b69f55c0433c50204749"
